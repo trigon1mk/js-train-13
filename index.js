@@ -381,38 +381,54 @@
 // );
 // // Виведе: { param1: true, param2: true, param3: true, param4: false }
 
-// Завдання 11
+// // Завдання 11
 
-/**
- * Функція `processURL` приймає URL та об'єкт з параметрами та налаштуваннями для обробки URL.
- * url (рядок) - URL, який потрібно обробити.
- * options (об'єкт) - об'єкт, який містить параметри та налаштування для обробки URL.
- *
- * Функція повертає новий URL, який було сформовано на основі вхідного URL і параметрів обробки.
- */
-function processUrl(url, options) {
-  // Створюємо новий об'єкт URL з вхідної URL-адреси.
-  // Перевіряємо, чи в об'єкті 'options' є параметри пошуку.
-  // Якщо є, перебираємо ці параметри за допомогою циклу 'for in'.
-  // Для кожного ключа параметру додаємо його та відповідне значення до об'єкта 'urlObj' за допомогою методу 'append'.
-  // Перевіряємо, чи в об'єкті 'options' є протокол.
-  // Якщо є, змінюємо протокол 'urlObj' на протокол з 'options'.
-  // Перевіряємо, чи в об'єкті 'options' є хост.
-  // Якщо є, змінюємо хост 'urlObj' на хост з 'options'.
-  // Повертаємо 'urlObj' у вигляді рядка за допомогою методу 'toString'.
-}
+// /**
+//  * Функція `processURL` приймає URL та об'єкт з параметрами та налаштуваннями для обробки URL.
+//  * url (рядок) - URL, який потрібно обробити.
+//  * options (об'єкт) - об'єкт, який містить параметри та налаштування для обробки URL.
+//  *
+//  * Функція повертає новий URL, який було сформовано на основі вхідного URL і параметрів обробки.
+//  */
+// function processUrl(url, options) {
+//   let urlObj = new URL(url);
+//   if (options.searchParams) {
+//     for (const param in options.searchParams) {
+//       urlObj.searchParams.append(param, options.searchParams[param]);
+//     }
+//   }
 
-// Приклад використання функції processURL
-console.log("Завдання: 11 ==============================");
+//   if (options.protocol) {
+//     urlObj.protocol = options.protocol;
+//   }
 
-console.log(
-  processUrl("https://example.com/path", {
-    searchParams: { param1: "value1", param2: "value2" },
-    protocol: "http:",
-    host: "newexample.com",
-  })
-);
-// Виведе: 'http://newexample.com/path?param1=value1&param2=value2'
+//   if (options.host) {
+//     urlObj.host = options.host;
+//   }
+
+//   return urlObj.toString();
+//   // Створюємо новий об'єкт URL з вхідної URL-адреси.
+//   // Перевіряємо, чи в об'єкті 'options' є параметри пошуку.
+//   // Якщо є, перебираємо ці параметри за допомогою циклу 'for in'.
+//   // Для кожного ключа параметру додаємо його та відповідне значення до об'єкта 'urlObj' за допомогою методу 'append'.
+//   // Перевіряємо, чи в об'єкті 'options' є протокол.
+//   // Якщо є, змінюємо протокол 'urlObj' на протокол з 'options'.
+//   // Перевіряємо, чи в об'єкті 'options' є хост.
+//   // Якщо є, змінюємо хост 'urlObj' на хост з 'options'.
+//   // Повертаємо 'urlObj' у вигляді рядка за допомогою методу 'toString'.
+// }
+
+// // Приклад використання функції processURL
+// console.log("Завдання: 11 ==============================");
+
+// console.log(
+//   processUrl("https://example.com/path", {
+//     searchParams: { param1: "value1", param2: "value2" },
+//     protocol: "http:",
+//     host: "newexample.com",
+//   })
+// );
+// // Виведе: 'http://newexample.com/path?param1=value1&param2=value2'
 
 // // Завдання 12
 // /**
@@ -424,6 +440,24 @@ console.log(
 //  * Повертається - Новий URL з модифікованими пошуковими параметрами.
 //  */
 // function manipulateQuery(url, options) {
+//   let urlObj = new URL(url);
+
+//   if (options.has("append")) {
+//     const appendMap = options.get("append");
+//     for (const [key, value] of appendMap) {
+//       urlObj.searchParams.append(key, value);
+//     }
+//   }
+
+//   if (options.has("delete")) {
+//     const deleteArray = options.get("delete");
+//     for (const key of deleteArray) {
+//       urlObj.searchParams.delete(key);
+//     }
+//   }
+
+//   return urlObj.toString();
+
 //   // Створюємо новий об'єкт URL з вхідної URL-адреси.
 //   // Якщо в словнику `options` є ключ `append`...
 //   // ...перебираємо його ключі та значення за допомогою циклу for...of.
@@ -456,35 +490,35 @@ console.log(
 // );
 // // Виведе: 'https://example.com/path?param3=value3&param4=value4'
 
-// // Завдання 13
+// Завдання 13
 
-// /**
-//  * Функція `getUrlData` приймає URL у вигляді рядка і повертає інформацію про URL.
-//  * @url (рядок) - URL-адреса для аналізу.
-//  *
-//  * Функція повертає об'єкт, що містить наступні ключі:
-//  * - 'origin': походження URL.
-//  * - 'hostname': ім'я хоста URL.
-//  * - 'port': порт URL.
-//  * - 'username': ім'я користувача в URL.
-//  * - 'password': пароль в URL.
-//  */
-// function getUrlData(url) {
-//   // Створюємо новий об'єкт URL з вхідної URL-адреси.
-//   // Повертаємо об'єкт з відповідними даними.
+/**
+ * Функція `getUrlData` приймає URL у вигляді рядка і повертає інформацію про URL.
+ * @url (рядок) - URL-адреса для аналізу.
+ *
+ * Функція повертає об'єкт, що містить наступні ключі:
+ * - 'origin': походження URL.
+ * - 'hostname': ім'я хоста URL.
+ * - 'port': порт URL.
+ * - 'username': ім'я користувача в URL.
+ * - 'password': пароль в URL.
+ */
+function getUrlData(url) {
+  // Створюємо новий об'єкт URL з вхідної URL-адреси.
+  // Повертаємо об'єкт з відповідними даними.
+}
+
+// Приклад використання функції getUrlData
+console.log("Завдання: 13 ==============================");
+console.log(getUrlData("https://username:password@example.com:8080/path"));
+// Виведе:
+// {
+//   origin: 'https://example.com:8080',
+//   hostname: 'example.com',
+//   port: '8080',
+//   username: 'username',
+//   password: 'password'
 // }
-
-// // Приклад використання функції getUrlData
-// console.log("Завдання: 13 ==============================");
-// console.log(getUrlData("https://username:password@example.com:8080/path"));
-// // Виведе:
-// // {
-// //   origin: 'https://example.com:8080',
-// //   hostname: 'example.com',
-// //   port: '8080',
-// //   username: 'username',
-// //   password: 'password'
-// // }
 
 // // Завдання 14
 
